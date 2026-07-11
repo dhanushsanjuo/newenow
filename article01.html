@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Speed Is A Ranking Factor — Here's What's Actually Slowing You Down | Enovexa Solutions</title>
+  <meta name="description" content="A practical checklist for diagnosing Core Web Vitals issues before they cost you traffic and conversions." />
+  <link rel="canonical" href="https://www.enovexa.com/article1.html" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Enovexa Solutions" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Website Speed Is A Ranking Factor — Here's What's Actually Slowing You Down" />
+  <meta property="og:description" content="A practical checklist for diagnosing Core Web Vitals issues before they cost you traffic and conversions." />
+  <meta property="og:image" content="https://www.enovexa.com/logo.png" />
+  <meta property="og:site_name" content="Enovexa Solutions" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #A50D25;
+      --green-mid: #A50D25;
+      --accent: #A50D25;
+      --lime: #F7C5CC;
+      --red: #A50D25;
+      --white: #FFFFFF;
+      --off-white: #F9F9F9;
+      --light-gray: #F2F2F2;
+      --dark: #1A1A1A;
+      --muted: #6B6B6B;
+      --border: rgba(200, 16, 46, 0.13);
+      --card-bg: #FFFFFF;
+      --heading: Arial, sans-serif;
+      --body: Arial, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--off-white);
+      color: var(--dark);
+      font-family: var(--body);
+      font-size: 16px;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 900;
+      padding: 0 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+      height: 90px;
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+      border-bottom: 1.5px solid #fff;
+    }
+
+    .logo {
+      font-family: var(--heading);
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--dark);
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      padding: 2px 0;
+      position: relative;
+      height: 130px;
+      width: 200px;
+    }
+
+    .logo-img {
+      height: 130px;
+      width: 200px;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+
+    .nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--dark);
+      text-decoration: none;
+      font-size: .87rem;
+      font-weight: 600;
+      padding: 9px 18px;
+      border: 1px solid rgba(0,0,0,0.15);
+      border-radius: 6px;
+      transition: all .2s;
+    }
+
+    .nav-back:hover {
+      background: var(--red);
+      border-color: var(--red);
+      color: #fff;
+    }
+
+    .nav-back svg { flex-shrink: 0; }
+
+    /* ── ARTICLE HERO ── */
+    .article-hero {
+      padding: 160px 5vw 60px;
+      background: linear-gradient(180deg, #fff 0%, var(--off-white) 100%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .article-hero-inner { max-width: 800px; margin: 0 auto; }
+
+    .kicker {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .kicker span.bar { display: inline-block; width: 24px; height: 2px; background: var(--red); border-radius: 2px; }
+
+    h1.article-title {
+      font-family: var(--heading);
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      font-weight: 800;
+      color: var(--dark);
+      letter-spacing: -1px;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .article-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 28px;
+    }
+
+    .meta-row {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: .85rem;
+      color: var(--muted);
+      flex-wrap: wrap;
+    }
+
+    .meta-row .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--muted); }
+
+    /* ── ARTICLE BODY ── */
+    .article-body {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 56px 5vw 100px;
+    }
+
+    .article-body h2 {
+      font-family: var(--heading);
+      font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+      font-weight: 800;
+      color: var(--dark);
+      letter-spacing: -0.5px;
+      margin: 46px 0 18px;
+      line-height: 1.3;
+    }
+
+    .article-body h2 span.num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      background: var(--red);
+      color: #fff;
+      border-radius: 8px;
+      font-size: .85rem;
+      margin-right: 12px;
+      vertical-align: middle;
+    }
+
+    .article-body h3 {
+      font-family: var(--heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin: 26px 0 12px;
+    }
+
+    .article-body p {
+      color: #3d3d3d;
+      font-size: .99rem;
+      line-height: 1.85;
+      margin-bottom: 16px;
+    }
+
+    .article-body ul, .article-body ol {
+      margin: 0 0 20px 0;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .article-body ul li, .article-body ol li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: .96rem;
+      color: #3d3d3d;
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+
+    .article-body ul li .tick {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+      background: rgba(165,13,37,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+
+    .article-body strong { color: var(--dark); font-weight: 700; }
+
+    /* Stat / callout boxes */
+    .callout {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--red);
+      border-radius: 10px;
+      padding: 22px 24px;
+      margin: 28px 0;
+    }
+
+    .callout p { margin-bottom: 0; font-size: .95rem; }
+    .callout .callout-label {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 28px 0 32px;
+    }
+
+    .stat-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px 18px;
+      text-align: center;
+    }
+
+    .stat-card .stat-num {
+      font-family: var(--heading);
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: var(--red);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-card .stat-label {
+      font-size: .8rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* Threshold table */
+    .vitals-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0 32px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .vitals-table th {
+      background: var(--light-gray);
+      text-align: left;
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      color: var(--muted);
+      padding: 12px 16px;
+      font-weight: 700;
+    }
+
+    .vitals-table td {
+      padding: 14px 16px;
+      font-size: .9rem;
+      border-top: 1px solid var(--border);
+      color: #3d3d3d;
+    }
+
+    .vitals-table td.metric-name { font-weight: 700; color: var(--dark); }
+    .vitals-table td .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: .78rem;
+      font-weight: 700;
+    }
+    .badge.good { background: rgba(34,197,94,0.12); color: #166534; }
+    .badge.warn { background: rgba(234,179,8,0.15); color: #92660b; }
+    .badge.poor { background: rgba(165,13,37,0.1); color: var(--red); }
+
+    /* Checklist section */
+    .checklist-box {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 8px 24px;
+      margin: 24px 0 36px;
+    }
+
+    .checklist-box .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .checklist-box .check-item:last-child { border-bottom: none; }
+
+    .checklist-box .check-item .box {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border: 2px solid var(--red);
+      border-radius: 6px;
+      margin-top: 2px;
+    }
+
+    .checklist-box .check-item div h4 {
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+
+    .checklist-box .check-item div p {
+      font-size: .87rem;
+      color: var(--muted);
+      margin-bottom: 0;
+      line-height: 1.6;
+    }
+
+    /* CTA (replaces footer) */
+    .article-cta {
+      background: #1A1A1A;
+      padding: 70px 5vw;
+      margin-top: 40px;
+    }
+
+    .article-cta-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .article-cta h2 {
+      font-family: var(--heading);
+      font-size: clamp(1.5rem, 3vw, 2.1rem);
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.5px;
+      margin-bottom: 14px;
+    }
+
+    .article-cta p {
+      color: rgba(255,255,255,0.65);
+      font-size: .98rem;
+      line-height: 1.75;
+      max-width: 560px;
+      margin: 0 auto 30px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--red);
+      color: #fff;
+      border: none;
+      padding: 13px 30px;
+      font-family: var(--body);
+      font-size: .92rem;
+      font-weight: 700;
+      border-radius: 8px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all .2s;
+    }
+
+    .btn-primary:hover { transform: translateY(-2px); background: #8c0b1f; }
+
+    .btn-secondary {
+      background: transparent;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.25);
+      padding: 13px 30px;
+      font-family: var(--body);
+      font-size: .92rem;
+      font-weight: 600;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all .2s;
+    }
+
+    .btn-secondary:hover { background: rgba(255,255,255,0.08); }
+
+    .mini-footer {
+      text-align: center;
+      padding: 24px 5vw;
+      font-size: .8rem;
+      color: var(--muted);
+      background: #1A1A1A;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .mini-footer span { color: rgba(255,255,255,0.4); }
+
+    @media (max-width: 700px) {
+      nav { padding: 0 4vw; height: 74px; }
+      .logo { height: 100px; width: 150px; }
+      .article-hero { padding: 120px 6vw 40px; }
+      .article-body { padding: 40px 6vw 70px; }
+      .stat-grid { grid-template-columns: 1fr; }
+      .vitals-table { font-size: .8rem; }
+      .vitals-table th, .vitals-table td { padding: 10px; }
+      .nav-back span.label { display: none; }
+      .nav-back { padding: 9px 12px; }
+    }
+  
+    /* Page load fade-up animation */
+    @keyframes pageFadeUp {
+      from { opacity: 0; transform: translate3d(0, 24px, 0); }
+      to   { opacity: 1; transform: translate3d(0, 0, 0); }
+    }
+    .article-hero, .article-body, .article-cta {
+      opacity: 0;
+      animation: pageFadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      will-change: opacity, transform;
+    }
+    nav#navbar { animation: pageFadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
+    .article-hero { animation-delay: 0.10s; }
+    .article-body { animation-delay: 0.25s; }
+    .article-cta  { animation-delay: 0.40s; }
+    @media (prefers-reduced-motion: reduce) {
+      nav#navbar, .article-hero, .article-body, .article-cta {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="index.html" class="logo">
+      <img class="logo-img" id="navLogo" src="logo.png" alt="Enovexa Solutions Logo">
+    </a>
+    <div class="nav-actions">
+      <a href="blog.html" class="nav-back">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M9.5 12L5.5 8l4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="label">Back to Blogs</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ARTICLE HERO -->
+  <header class="article-hero">
+    <div class="article-hero-inner">
+      <div class="kicker"><span class="bar"></span>SEO &amp; Web Performance</div>
+      <h1 class="article-title">Website Speed Is A Ranking Factor — Here's What's Actually Slowing You Down</h1>
+      <p class="article-sub">A practical checklist for diagnosing Core Web Vitals issues before they cost you traffic and conversions.</p>
+      <div class="meta-row">
+        <span>By Enovexa Solutions</span>
+        <span class="dot"></span>
+        <span>9 min read</span>
+        <span class="dot"></span>
+        <span>Web Performance</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ARTICLE BODY -->
+  <main class="article-body">
+
+    <p>Google has been explicit about it for years: page experience, and specifically speed, is a ranking signal. But "make your site faster" is vague advice. What actually moves the needle is understanding the three Core Web Vitals metrics Google measures, knowing which one is failing on your site, and fixing the specific technical cause — not guessing and hoping.</p>
+
+    <p>This checklist walks through what's typically slowing sites down, how to diagnose it properly, and what to fix first for the biggest impact.</p>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-num">53%</div>
+        <div class="stat-label">of mobile visitors leave a page that takes over 3 seconds to load</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">1s</div>
+        <div class="stat-label">delay in load time can reduce conversions by around 7%</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Core Web Vitals metrics Google uses to score page experience</div>
+      </div>
+    </div>
+
+    <h2><span class="num">1</span>What Core Web Vitals Actually Measure</h2>
+    <p>Core Web Vitals aren't a single "speed score" — they're three separate metrics, each measuring a different kind of user frustration. A site can pass one and fail another, so treating "speed" as one problem usually means fixing the wrong thing first.</p>
+
+    <table class="vitals-table">
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th>What it measures</th>
+          <th>Good threshold</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="metric-name">LCP<br><span style="font-weight:400;color:var(--muted);font-size:.78rem">Largest Contentful Paint</span></td>
+          <td>Time until the largest visible element (hero image, headline) renders</td>
+          <td><span class="badge good">≤ 2.5s</span></td>
+        </tr>
+        <tr>
+          <td class="metric-name">INP<br><span style="font-weight:400;color:var(--muted);font-size:.78rem">Interaction to Next Paint</span></td>
+          <td>Responsiveness — delay between a click/tap and visible feedback</td>
+          <td><span class="badge good">≤ 200ms</span></td>
+        </tr>
+        <tr>
+          <td class="metric-name">CLS<br><span style="font-weight:400;color:var(--muted);font-size:.78rem">Cumulative Layout Shift</span></td>
+          <td>Visual stability — how much elements jump around while loading</td>
+          <td><span class="badge good">≤ 0.1</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <span class="callout-label">Why this matters for SEO</span>
+      <p>Google uses field data collected from real Chrome users (the Chrome UX Report) — not lab tests — to score your site. That means fixes have to hold up under real network conditions and real devices, not just a clean run in a testing tool.</p>
+    </div>
+
+    <h2><span class="num">2</span>What's Usually Slowing LCP Down</h2>
+    <p>LCP problems almost always trace back to one of a handful of causes. Work through these in order of likelihood:</p>
+
+    <ul>
+      <li><span class="tick">✓</span><div><strong>Unoptimized hero images.</strong> A 4MB uncompressed banner image is the single most common LCP killer. Convert to WebP or AVIF and compress aggressively.</div></li>
+      <li><span class="tick">✓</span><div><strong>Render-blocking CSS and JavaScript.</strong> Scripts and stylesheets loaded in the <code>&lt;head&gt;</code> without <code>async</code> or <code>defer</code> delay everything below them.</div></li>
+      <li><span class="tick">✓</span><div><strong>Slow server response time (TTFB).</strong> Cheap shared hosting, no caching layer, or an unoptimized database query can add seconds before any HTML even arrives.</div></li>
+      <li><span class="tick">✓</span><div><strong>No preloading for the hero element.</strong> If the largest element is a background image loaded via CSS, the browser often discovers it late — a <code>&lt;link rel="preload"&gt;</code> fixes this.</div></li>
+      <li><span class="tick">✓</span><div><strong>Third-party embeds loading early.</strong> Chat widgets, video embeds, and font scripts placed high in the page compete for bandwidth with your actual content.</div></li>
+    </ul>
+
+    <h2><span class="num">3</span>What's Usually Causing Poor INP</h2>
+    <p>INP replaced First Input Delay in 2024 and it's the metric most sites quietly fail without realizing it, because it only shows up when a real person interacts with the page.</p>
+
+    <ul>
+      <li><span class="tick">✓</span><div><strong>Heavy JavaScript execution on the main thread.</strong> Large bundles, unoptimized React re-renders, or bloated analytics scripts block the browser from responding to taps and clicks.</div></li>
+      <li><span class="tick">✓</span><div><strong>Too many third-party scripts.</strong> Every ad tag, tracking pixel, and chat widget adds its own JavaScript that competes for processing time.</div></li>
+      <li><span class="tick">✓</span><div><strong>Long tasks that never yield.</strong> A single JavaScript task running longer than 50ms blocks all user interaction until it finishes.</div></li>
+      <li><span class="tick">✓</span><div><strong>Unoptimized event handlers.</strong> Expensive functions attached to scroll or input events without debouncing can freeze the interface.</div></li>
+    </ul>
+
+    <h2><span class="num">4</span>What's Usually Causing Layout Shift</h2>
+    <p>CLS issues are visually obvious once you know what to look for — content jumping as the page loads — but the underlying causes are easy to miss in code review.</p>
+
+    <ul>
+      <li><span class="tick">✓</span><div><strong>Images and embeds without set dimensions.</strong> If width and height aren't defined, the browser doesn't reserve space and content jumps when the asset loads.</div></li>
+      <li><span class="tick">✓</span><div><strong>Web fonts causing a "flash of unstyled text."</strong> When a custom font loads after a fallback font, text reflows and pushes content around.</div></li>
+      <li><span class="tick">✓</span><div><strong>Ads and embeds injected without reserved space.</strong> Dynamically inserted content above existing elements is the most common CLS complaint on publisher and e-commerce sites.</div></li>
+      <li><span class="tick">✓</span><div><strong>Animations that use layout-triggering properties.</strong> Animating <code>width</code>, <code>height</code>, or <code>top</code> instead of <code>transform</code> forces the browser to recalculate layout repeatedly.</div></li>
+    </ul>
+
+    <h2><span class="num">5</span>The Diagnostic Checklist</h2>
+    <p>Before making any changes, run this sequence to find out exactly what's broken and where — guessing wastes development time on fixes that won't move your score.</p>
+
+    <div class="checklist-box">
+      <div class="check-item">
+        <div class="box"></div>
+        <div>
+          <h4>Pull field data from PageSpeed Insights or Search Console</h4>
+          <p>Start with real-user data, not a lab test. Search Console's Core Web Vitals report shows exactly which URL groups are failing and on which metric.</p>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="box"></div>
+        <div>
+          <h4>Run a Lighthouse audit in Chrome DevTools</h4>
+          <p>Lighthouse gives you a prioritized list of specific opportunities — unused CSS, oversized images, render-blocking resources — ranked by estimated time savings.</p>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="box"></div>
+        <div>
+          <h4>Check the Performance panel for long tasks</h4>
+          <p>Record a page load and interaction in DevTools' Performance tab to see exactly which scripts are blocking the main thread and for how long.</p>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="box"></div>
+        <div>
+          <h4>Audit third-party scripts individually</h4>
+          <p>Use the Coverage tab or a tool like Request Map Generator to see how much weight each embedded script, tag, or widget is actually adding.</p>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="box"></div>
+        <div>
+          <h4>Test on a throttled mobile connection</h4>
+          <p>Most traffic and most failures happen on mid-range mobile devices over 4G, not on your development machine over fiber. Always test throttled.</p>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="box"></div>
+        <div>
+          <h4>Re-test after every fix, not just at the end</h4>
+          <p>Isolate changes so you know which fix actually improved the metric — bundling multiple fixes together makes it impossible to know what worked.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2><span class="num">6</span>Quick Wins vs. Structural Fixes</h2>
+    <p>Not every fix takes the same effort, and it helps to separate what you can ship today from what needs a bigger engineering push.</p>
+
+    <h3>Quick wins (hours, not days)</h3>
+    <ul>
+      <li><span class="tick">✓</span><div>Compress and convert images to WebP or AVIF</div></li>
+      <li><span class="tick">✓</span><div>Add <code>width</code> and <code>height</code> attributes to every image and embed</div></li>
+      <li><span class="tick">✓</span><div>Add <code>font-display: swap</code> to web font declarations</div></li>
+      <li><span class="tick">✓</span><div>Defer non-critical JavaScript and remove unused scripts</div></li>
+    </ul>
+
+    <h3>Structural fixes (needs planning)</h3>
+    <ul>
+      <li><span class="tick">✓</span><div>Move to a CDN and enable proper server-side caching</div></li>
+      <li><span class="tick">✓</span><div>Code-split large JavaScript bundles and lazy-load below-the-fold components</div></li>
+      <li><span class="tick">✓</span><div>Re-architect how third-party scripts and ad tags are loaded</div></li>
+      <li><span class="tick">✓</span><div>Migrate to a faster hosting stack if TTFB is consistently high</div></li>
+    </ul>
+
+    <div class="callout">
+      <span class="callout-label">The bottom line</span>
+      <p>Speed isn't a one-time project — it's a maintenance habit. New images, new plugins, and new tracking scripts will keep eroding your Core Web Vitals unless you're monitoring field data regularly and re-auditing after every major content or design change.</p>
+    </div>
+
+  </main>
+
+  <!-- CTA (replaces footer) -->
+  <section class="article-cta">
+    <div class="article-cta-inner">
+      <h2>Not sure what's actually slowing your site down?</h2>
+      <p>Our team runs a full Core Web Vitals audit — real field data, a prioritized fix list, and a clear before/after benchmark — so you know exactly what to fix and why.</p>
+      <div class="cta-buttons">
+        <a href="start-project.html" class="btn-primary">Get a Free Speed Audit →</a>
+        
+      </div>
+    </div>
+  </section>
+
+  <div class="mini-footer">
+    <span>© 2026 Enovexa Solutions. All rights reserved.</span>
+  </div>
+
+</body>
+
+</html>

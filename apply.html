@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apply Now | Careers at Enovexa Solutions</title>
+  <meta name="description" content="Apply for open positions at Enovexa Solutions — System Support, Sales Specialist, Graphic Designer, Digital Marketing Executive, Web Developer & Internships." />
+  <link rel="canonical" href="https://www.enovexa.com/apply.html" />
+  <meta name="robots" content="index, follow" />
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+:root {
+  --green: #A50D25;
+  --green-mid: #A50D25;
+  --green-light: #A50D25;
+  --accent: #A50D25;
+  --lime: #F7C5CC;
+  --red: #A50D25;
+  --white: #FFFFFF;
+  --off-white: #F9F9F9;
+  --light-gray: #F2F2F2;
+  --dark: #1A1A1A;
+  --muted: #6B6B6B;
+  --border: rgba(200, 16, 46, 0.13);
+  --card-bg: #FFFFFF;
+  --heading: Arial, sans-serif;
+  --body: Arial, sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0
+}
+
+html { scroll-behavior: smooth }
+
+body {
+  background: var(--off-white);
+  color: var(--dark);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.65;
+  overflow-x: hidden
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 900;
+  padding: 0 5vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  height: 90px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+  border-bottom: 1.5px solid #fff;
+}
+
+.logo {
+  padding: 2px 0;
+  position: relative;
+  height: 70px;
+  width: 160px;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo-img {
+  height: 130px;
+  width: 200px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.nav-back {
+  color: var(--dark);
+  text-decoration: none;
+  font-size: .86rem;
+  font-weight: 700;
+  padding: 10px 20px;
+  border: 1px solid rgba(0,0,0,0.18);
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all .2s;
+  background: transparent;
+}
+
+.nav-back:hover {
+  background: var(--red);
+  color: #fff;
+  border-color: var(--red);
+  transform: translateY(-1px);
+}
+
+/* ── PAGE HERO ── */
+.page-hero {
+  background: #fff;
+  padding: 130px 5vw 50px;
+  text-align: center;
+}
+
+.sec-label {
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px
+}
+
+.sec-label::before, .sec-label::after {
+  content: '';
+  width: 24px;
+  height: 2px;
+  background: var(--red);
+  border-radius: 2px
+}
+
+.page-hero h1 {
+  font-family: var(--heading);
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -1px;
+  color: var(--dark);
+  margin: 6px auto 16px;
+  max-width: 720px;
+}
+
+.page-hero h1 em {
+  color: var(--accent);
+  font-style: normal
+}
+
+.page-hero p {
+  max-width: 600px;
+  margin: 0 auto;
+  color: var(--muted);
+  font-size: .97rem;
+  line-height: 1.8
+}
+
+/* ── FORM SECTION ── */
+.apply-section {
+  padding: 20px 5vw 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.apply-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 48px;
+  max-width: 720px;
+  width: 100%;
+  box-shadow: 0 14px 40px rgba(0,0,0,.05);
+}
+
+.form-group {
+  margin-bottom: 26px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+label {
+  display: block;
+  font-size: .85rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 8px;
+  letter-spacing: .2px;
+}
+
+label .req { color: var(--red); }
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea,
+select {
+  width: 100%;
+  padding: 13px 16px;
+  font-family: var(--body);
+  font-size: .92rem;
+  color: var(--dark);
+  background: var(--off-white);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  outline: none;
+  transition: border-color .2s, background .2s;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--red);
+  background: #fff;
+}
+
+fieldset {
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 18px 18px 6px;
+}
+
+fieldset legend {
+  font-size: .85rem;
+  font-weight: 700;
+  color: var(--dark);
+  padding: 0 8px;
+}
+
+.gender-options {
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+
+.gender-options label,
+.position-grid label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  font-size: .9rem;
+  color: var(--dark);
+  margin-bottom: 0;
+  cursor: pointer;
+}
+
+.gender-options input,
+.position-grid input {
+  accent-color: var(--red);
+  width: 17px;
+  height: 17px;
+  cursor: pointer;
+}
+
+.position-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 20px;
+  padding: 6px 2px 12px;
+}
+
+/* File upload */
+.file-drop {
+  border: 1.5px dashed var(--border);
+  border-radius: 10px;
+  background: var(--off-white);
+  padding: 26px 18px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color .2s, background .2s;
+  position: relative;
+}
+
+.file-drop:hover {
+  border-color: var(--red);
+  background: rgba(165, 13, 37, .04);
+}
+
+.file-drop input[type="file"] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.file-drop .file-icon {
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.file-drop .file-main {
+  font-size: .9rem;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+.file-drop .file-sub {
+  font-size: .78rem;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.file-drop.has-file {
+  border-color: var(--red);
+  border-style: solid;
+  background: rgba(165, 13, 37, .05);
+}
+
+.file-name {
+  margin-top: 10px;
+  font-size: .85rem;
+  color: var(--red);
+  font-weight: 700;
+  word-break: break-all;
+}
+
+.error-msg {
+  font-size: .78rem;
+  color: var(--red);
+  margin-top: 6px;
+  display: none;
+}
+
+.error-msg.show { display: block; }
+
+.field-error input,
+.field-error select,
+.field-error .file-drop,
+.field-error fieldset {
+  border-color: var(--red);
+}
+
+.server-error {
+  display: none;
+  background: rgba(165, 13, 37, .08);
+  border: 1.5px solid var(--red);
+  color: var(--red);
+  font-size: .86rem;
+  font-weight: 600;
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.server-error.show { display: block; }
+
+.submit-btn {
+  width: 100%;
+  background: var(--red);
+  color: #fff;
+  border: none;
+  padding: 16px 28px;
+  font-family: var(--body);
+  font-size: .96rem;
+  font-weight: 700;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all .2s;
+  letter-spacing: .2px;
+  margin-top: 8px;
+}
+
+.submit-btn:hover {
+  background: var(--green-mid);
+  transform: translateY(-1px);
+  filter: brightness(1.12);
+}
+
+.submit-btn:disabled {
+  opacity: .65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ── SUCCESS STATE ── */
+.success-panel {
+  display: none;
+  text-align: center;
+  padding: 30px 10px 10px;
+}
+
+.success-panel.show {
+  display: block;
+}
+
+.success-icon {
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  background: rgba(165, 13, 37, .1);
+  color: var(--red);
+  font-size: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 22px;
+}
+
+.success-panel h2 {
+  font-family: var(--heading);
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: var(--dark);
+  margin-bottom: 12px;
+}
+
+.success-panel p {
+  color: var(--muted);
+  font-size: .95rem;
+  max-width: 420px;
+  margin: 0 auto 28px;
+  line-height: 1.8;
+}
+
+.home-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--red);
+  color: #fff;
+  text-decoration: none;
+  padding: 13px 30px;
+  font-size: .9rem;
+  font-weight: 700;
+  border-radius: 10px;
+  transition: all .2s;
+}
+
+.home-btn:hover {
+  background: var(--green-mid);
+  transform: translateY(-1px);
+}
+
+.apply-card.hidden { display: none; }
+
+/* ── MOBILE ── */
+@media (max-width: 700px) {
+  nav { padding: 0 5vw; height: 78px; }
+  .logo { height: 56px; width: 130px;padding-top: 12px; }
+  .nav-back { padding: 8px 14px; font-size: .8rem; }
+  .nav-back span.back-text { display: none; }
+  .page-hero { padding: 110px 6vw 34px; }
+  .apply-section { padding: 10px 5vw 70px; }
+  .apply-card { padding: 30px 22px; border-radius: 16px; }
+  .form-row { grid-template-columns: 1fr; gap: 0; }
+  .position-grid { grid-template-columns: 1fr; }
+  .gender-options { gap: 16px; }
+}
+
+/* ── POP-UP ENTRANCE ANIMATION ── */
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: translateY(28px) scale(.94);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-4px) scale(1.015);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes popInSmall {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(.97);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.page-hero.pop-in {
+  animation: popInSmall .55s cubic-bezier(.22, 1, .36, 1) both;
+}
+
+.apply-card.pop-in {
+  animation: popIn .65s cubic-bezier(.22, 1.15, .36, 1) both;
+  animation-delay: .12s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-hero.pop-in,
+  .apply-card.pop-in {
+    animation: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .apply-card.pop-in {
+    animation: popIn .5s cubic-bezier(.22, 1.1, .36, 1) both;
+    animation-delay: .08s;
+  }
+  .page-hero.pop-in {
+    animation: popInSmall .45s cubic-bezier(.22, 1, .36, 1) both;
+  }
+}
+
+/* ── FOOTER ── */
+footer.site-footer {
+  background: #000;
+  padding: 34px 5vw;
+  text-align: center;
+}
+
+footer.site-footer p {
+  color: #8a8a8a;
+  font-size: .88rem;
+  font-family: var(--body);
+  letter-spacing: .2px;
+  margin: 0;
+}
+
+@media (max-width: 700px) {
+  footer.site-footer {
+    padding: 24px 6vw;
+  }
+  footer.site-footer p {
+    font-size: .78rem;
+  }
+}
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="index.html" class="logo">
+      <img class="logo-img" src="logo.png" alt="Enovexa Solutions Logo">
+    </a>
+    <a href="career.html" class="nav-back">
+      <span aria-hidden="true">←</span> <span class="back-text">Back to Careers</span>
+    </a>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero pop-in">
+    <span class="sec-label">Join Enovexa</span>
+    <h1>Apply for a <em>Position</em> at Enovexa Solutions</h1>
+    <p>Fill out the form below and our HR team will get back to you shortly. Make sure your resume is up to date and in PDF format.</p>
+  </section>
+
+  <!-- APPLY FORM -->
+  <section class="apply-section">
+    <div class="apply-card pop-in" id="applyCard">
+      <form id="applyForm" novalidate>
+
+        <div class="form-group">
+          <label for="fullName">Full Name <span class="req">*</span></label>
+          <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" autocomplete="name">
+          <div class="error-msg">Please enter your full name.</div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email Address <span class="req">*</span></label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email">
+            <div class="error-msg">Please enter a valid email address.</div>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number <span class="req">*</span></label>
+            <input type="tel" id="phone" name="phone" placeholder="+91 XXXXX XXXXX" autocomplete="tel">
+            <div class="error-msg">Please enter a valid phone number.</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <fieldset id="genderField">
+            <legend>Gender <span class="req">*</span></legend>
+            <div class="gender-options">
+              <label><input type="radio" name="gender" value="Male"> Male</label>
+              <label><input type="radio" name="gender" value="Female"> Female</label>
+              
+            </div>
+          </fieldset>
+          <div class="error-msg">Please select a gender.</div>
+        </div>
+
+        <div class="form-group">
+          <label for="address">Address <span class="req">*</span></label>
+          <textarea id="address" name="address" placeholder="Enter your full address"></textarea>
+          <div class="error-msg">Please enter your address.</div>
+        </div>
+
+        <div class="form-group">
+          <fieldset id="positionsField">
+            <legend>Which position(s) are you interested in? <span class="req">*</span></legend>
+            <div class="position-grid">
+              <label><input type="checkbox" name="positions[]" value="System Support"> System Support</label>
+              <label><input type="checkbox" name="positions[]" value="Sales Specialist"> Sales Specialist</label>
+              <label><input type="checkbox" name="positions[]" value="Graphic Designer / Video Editor"> Graphic Designer / Video Editor</label>
+              <label><input type="checkbox" name="positions[]" value="Digital Marketing Executive"> Digital Marketing Executive</label>
+              <label><input type="checkbox" name="positions[]" value="Internship"> Internship</label>
+              <label><input type="checkbox" name="positions[]" value="Web Developer"> Web Developer</label>
+            </div>
+          </fieldset>
+          <div class="error-msg">Please select at least one position.</div>
+        </div>
+
+        <div class="form-group">
+          <label for="resume">Upload Resume (PDF only) <span class="req">*</span></label>
+          <div class="file-drop" id="fileDrop">
+            <span class="file-icon">📄</span>
+            <div class="file-main">Click to upload or drag your resume here</div>
+            <div class="file-sub">PDF only, max 5MB</div>
+            <input type="file" id="resume" name="resume" accept="application/pdf,.pdf">
+          </div>
+          <div class="file-name" id="fileName"></div>
+          <div class="error-msg">Please upload your resume in PDF format (max 5MB).</div>
+        </div>
+
+        <div class="server-error" id="serverError"></div>
+
+        <button type="submit" class="submit-btn" id="submitBtn">SUBMIT</button>
+      </form>
+
+      <!-- SUCCESS PANEL -->
+      <div class="success-panel" id="successPanel">
+        <div class="success-icon">✓</div>
+        <h2>Submit Successful....</h2>
+        <p>Thank you for applying to Enovexa Solutions! We've received your application and our HR team will review it and get back to you soon.</p>
+        <a href="career.html" class="home-btn">← Back to Home</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p>© 2026 Enovexa Solutions. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // ─────────────────────────────────────────────────────────────
+    // Front-end handling for the application form.
+    // Submits to api/submit_application.php, which validates the
+    // fields, stores the resume PDF on the server, inserts the
+    // application into the job_applications table, and returns
+    // { success: true } or { success: false, message: "..." }.
+    //
+    // NOTE: this file is expected to live at your site root (next
+    // to career.html), with the PHP API in an /api/ subfolder, e.g.:
+    //   your-site/apply.html
+    //   your-site/api/submit_application.php
+    // If your folder layout is different, update API_ENDPOINT below.
+    // ─────────────────────────────────────────────────────────────
+    const API_ENDPOINT = 'api/submit_application.php';
+
+    const form = document.getElementById('applyForm');
+    const fileDrop = document.getElementById('fileDrop');
+    const resumeInput = document.getElementById('resume');
+    const fileNameEl = document.getElementById('fileName');
+    const submitBtn = document.getElementById('submitBtn');
+    const applyCard = document.getElementById('applyCard');
+    const successPanel = document.getElementById('successPanel');
+    const serverError = document.getElementById('serverError');
+
+    function showServerError(message) {
+      serverError.textContent = message;
+      serverError.classList.add('show');
+    }
+
+    function hideServerError() {
+      serverError.textContent = '';
+      serverError.classList.remove('show');
+    }
+
+    const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+
+    resumeInput.addEventListener('change', () => {
+      const file = resumeInput.files[0];
+      clearFieldError(fileDrop.closest('.form-group'));
+      if (file) {
+        fileDrop.classList.add('has-file');
+        fileNameEl.textContent = '📎 ' + file.name;
+      } else {
+        fileDrop.classList.remove('has-file');
+        fileNameEl.textContent = '';
+      }
+    });
+
+    function showFieldError(group) {
+      group.classList.add('field-error');
+      const err = group.querySelector('.error-msg');
+      if (err) err.classList.add('show');
+    }
+
+    function clearFieldError(group) {
+      group.classList.remove('field-error');
+      const err = group.querySelector('.error-msg');
+      if (err) err.classList.remove('show');
+    }
+
+    function validateForm() {
+      let isValid = true;
+      const groups = form.querySelectorAll('.form-group');
+      groups.forEach(clearFieldError);
+
+      // Full name
+      const fullName = document.getElementById('fullName');
+      if (!fullName.value.trim()) {
+        showFieldError(fullName.closest('.form-group'));
+        isValid = false;
+      }
+
+      // Email
+      const email = document.getElementById('email');
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email.value.trim())) {
+        showFieldError(email.closest('.form-group'));
+        isValid = false;
+      }
+
+      // Phone
+      const phone = document.getElementById('phone');
+      const phonePattern = /^[0-9+\-\s()]{7,15}$/;
+      if (!phonePattern.test(phone.value.trim())) {
+        showFieldError(phone.closest('.form-group'));
+        isValid = false;
+      }
+
+      // Gender
+      const genderChecked = form.querySelector('input[name="gender"]:checked');
+      const genderGroup = document.getElementById('genderField').closest('.form-group');
+      if (!genderChecked) {
+        showFieldError(genderGroup);
+        isValid = false;
+      }
+
+      // Address
+      const address = document.getElementById('address');
+      if (!address.value.trim()) {
+        showFieldError(address.closest('.form-group'));
+        isValid = false;
+      }
+
+      // Positions
+      const positionsChecked = form.querySelectorAll('input[name="positions[]"]:checked');
+      const positionsGroup = document.getElementById('positionsField').closest('.form-group');
+      if (positionsChecked.length === 0) {
+        showFieldError(positionsGroup);
+        isValid = false;
+      }
+
+      // Resume
+      const resumeGroup = fileDrop.closest('.form-group');
+      const file = resumeInput.files[0];
+      if (!file) {
+        showFieldError(resumeGroup);
+        isValid = false;
+      } else if (file.type !== 'application/pdf' && !file.name.toLowerCase().endsWith('.pdf')) {
+        showFieldError(resumeGroup);
+        isValid = false;
+      } else if (file.size > MAX_FILE_SIZE) {
+        showFieldError(resumeGroup);
+        isValid = false;
+      }
+
+      return isValid;
+    }
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      hideServerError();
+
+      if (!validateForm()) {
+        const firstError = form.querySelector('.field-error');
+        if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'SUBMITTING...';
+
+      const formData = new FormData(form);
+
+      try {
+        const res = await fetch(API_ENDPOINT, {
+          method: 'POST',
+          body: formData
+        });
+
+        let data;
+        try {
+          data = await res.json();
+        } catch (parseErr) {
+          throw new Error('Unexpected response from server.');
+        }
+
+        if (res.ok && data.success) {
+          form.style.display = 'none';
+          successPanel.classList.add('show');
+        } else {
+          showServerError(data.message || 'Something went wrong. Please try again.');
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'SUBMIT';
+        }
+      } catch (err) {
+        showServerError('Unable to reach the server. Please check your connection and try again.');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'SUBMIT';
+      }
+    });
+  </script>
+
+</body>
+</html>
